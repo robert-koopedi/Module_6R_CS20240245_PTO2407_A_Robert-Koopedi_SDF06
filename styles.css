@@ -1,7 +1,6 @@
 /* Base Styles */
-
 :root {
-    font-size: 10px;
+    font-size: 16px; /* Adjust base font size */
 }
 
 *,
@@ -12,12 +11,245 @@
 
 body {
     font-family: "Open Sans", Arial, sans-serif;
-    min-height: 100vh;
     background-color: #fafafa;
     color: #262626;
-    padding-bottom: 3rem;
+    margin: 0;
+    padding: 0;
 }
 
-img {
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border-radius: 8px;
+    padding: 0 2.4rem;
+    border: 0.1rem solid #dbdbdb;
+    background-color: #0095f6;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+
+.btn:hover {
+    background-color: #0077cc;
+}
+
+/* Profile Section */
+.profile {
     display: block;
+    clear: both;
+    background: #fff; 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Profile Image */
+.profile-image {
+    float: left;
+    width: calc(33.3% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 10px solid green;
+}
+
+/* Profile User Settings */
+.profile-user-settings {
+    /* flex: 1;*/
+    display: inline-block; 
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 3rem;
+}
+
+.profile-user-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Profile Stats */
+.profile-stats {
+    margin-top: 20px;
+}
+
+.profile-stats ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.profile-stats li {
+    font-size: 16px;
+    color: #262626;
+    cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+    margin-right: 0;
+}
+
+/* Profile Bio */
+.profile-bio {
+    line-height: 1.5;
+    font-size: 16px;
+    color: black;
+    margin-top: 2.3rem;
+    font-weight: 400;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Gallery Section */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 10px; /* Space between items */
+    margin-top: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    margin: 1rem;
+    cursor: pointer;
+    overflow: hidden; /* Ensures that hover effect stays within the item */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Hover Effect for Gallery Items */
+.gallery-item:hover .gallery-item-info,
+.gallery-item:focus .gallery-item-info {
+    display: flex; /* Show overlay with info */
+}
+
+.visually-hidden{
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+}
+
+.gallery-item-info {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Center content vertically and horizontally */
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.gallery-item-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.gallery-item-info li {
+    display: inline-block;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-right: 2.2rem;
+}
+
+.gallery-item-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+/* Loader */
+.loader {
+    width: 5rem;
+    height: 5rem;
+    border: 0.6rem solid #f3f3f3;
+    border-bottom-color: #0095f6;
+    border-radius: 50%;
+    animation: spin 500ms linear infinite;
+    margin: 0 auto;
+}
+
+/* Keyframes for loader */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+@media screen and (max-width: 40rem) {
+    .profile {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4rem 0;
+    }
+
+    .profile-image {
+        float: none;
+        width: auto;
+    }
+
+    .profile-bio,
+    .profile-user-settings,
+    .profile-stats {
+        float: none;
+        width: auto;
+    }
+
+    .profile-user-settings {
+        flex-basis: 100%;
+        margin-top: 1rem;
+    }
 }
